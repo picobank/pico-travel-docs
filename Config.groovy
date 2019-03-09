@@ -11,7 +11,7 @@ inputPath = '.'
 
 //
 inputFiles = [
-        [file: 'arc42-template.adoc', formats: ['html','pdf','docbook']],
+        [file: 'arc42-template.adoc', formats: ['html','pdf','docbook', 'docx']],
         [file: 'ppt/Demo.pptx.ad', formats: ['revealjs']]
              ]
 
