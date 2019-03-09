@@ -26,7 +26,7 @@ changelog.with {
     // Directory of which the exportChangelog task will export the changelog.
     // It should be relative to the docDir directory provided in the
     // gradle.properties file.
-    dir = 'src'
+    dir = 'src/docs'
 
     // Command used to fetch the list of changes.
     // It should be a single command taking a directory as a parameter.
