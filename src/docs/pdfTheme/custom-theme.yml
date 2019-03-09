@@ -59,9 +59,9 @@ footer:
   height: 0.75in
   line_height: 1
   recto_content:
-    right: '{chapter-title} | *{page-number}*'
+    right: '{section-or-chapter-title}a | *{page-number}* coucou'
   verso_content:
-    left: '*{page-number}* | {chapter-title}'
+    left: '*{page-number}* | a{section-or-chapter-title}'
 image:
   align: center
 caption:

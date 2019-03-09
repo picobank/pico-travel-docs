@@ -57,7 +57,51 @@ In the best case you will get away with examples or simple signatures.
 
 ****
 
-_**<Overview Diagram>**_
+.Pico Travel Container Level Diagram
+[plantuml, "{plantUMLDir}pico-travel-container", png] 
+----
+!include /project/src/docs/includes/C4_Container.puml
+
+LAYOUT_LEFT_RIGHT
+LAYOUT_WITH_LEGEND
+
+Person(adminUser, "Administrator", "Administrator user")
+Person(endUser,  "User", "Any Pico user\n(validated by their emails)")
+System_Boundary(c1, "Pico Travel") {
+    Container(browserApp, "Web Application", "Ionic, Static webapp", "Browser application")
+    Container(iosApp, "iOS Application", "Static web application", "Browser application")
+    Container(androidApp, "Android Application", "Ionic, Cordova", "Browser application")
+    Container(authApp, "Pico Travel Auth", "Azure Functions, C#, .Net Core", "Authentification")
+    Container(backendApp, "Pico Travel Back", "Azure WebApp, Spring Boot, Java", "Backend")
+    ContainerDb(nosql, "Data Store", "Azure CosmosDB", "Stores places data, devices & comments")
+}
+
+
+System_Ext(sendgrid, "SendGrid")
+
+
+Rel(endUser, browserApp, "Uses", "HTTPS")
+Rel(endUser, iosApp, "Uses", "HTTPS")
+Rel(endUser, androidApp, "Uses", "HTTPS")
+Rel(endUser, authApp, "Verifies his email", "HTTPS")
+
+Rel(adminUser, backendApp, "Uploads data, Manages comments", "HTTPS")
+
+Rel(browserApp, backendApp, "Reads from", "HTTPS")
+Rel(browserApp, authApp, "Get device, Enroll", "HTTPS")
+
+Rel(iosApp, backendApp, "Reads from", "HTTPS")
+Rel(iosApp, authApp, "Get device, Enroll", "HTTPS")
+
+Rel(androidApp, backendApp, "Reads from", "HTTPS")
+Rel(androidApp, authApp, "Get device, Enroll", "HTTPS")
+
+Rel(backendApp, nosql, "Reads from", "HTTPS")
+Rel(authApp, nosql, "Reads/Writes devices", "HTTPS")
+
+
+Rel(authApp, sendgrid, "Sends Emails", "HTTPS")
+----
 
 Motivation::
 
@@ -149,6 +193,8 @@ You have to decide which building blocks of your system are important enough to 
 Please prefer relevance over completeness. Specify important, surprising, risky, complex or volatile building blocks.
 Leave out normal, simple, boring or standardized parts of your system
 ****
+
+
 
 ==== White Box _<building block 1>_
 
