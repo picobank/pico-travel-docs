@@ -9,3 +9,14 @@ For now, pandoc is not included in the Docker image so on MacOSX:
 
     cd build/docbook/
     pandoc -r docbook -t docx -o ../docx/arc42-template.docx arc42-template.xml
+
+## Dependencies
+
+### Included
+
+* [C4 PlantUML](https://github.com/RicardoNiepel/C4-PlantUML)
+* [Azure PlantUML](https://github.com/RicardoNiepel/Azure-PlantUML)
+
+### To look into
+
+* https://github.com/Roemer/plantuml-office

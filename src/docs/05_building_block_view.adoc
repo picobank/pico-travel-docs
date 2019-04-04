@@ -57,10 +57,29 @@ In the best case you will get away with examples or simple signatures.
 
 ****
 
+.Pico Bank Landscape diagram
+[plantuml, "{plantUMLDir}pico-travel-landscape", png] 
+----
+!include includes/all.puml
+
+LAYOUT_LEFT_RIGHT
+LAYOUT_WITH_LEGEND
+
+Person_Ext(endUser,  "Client", "PicoBank client)")
+
+Enterprise_Boundary(picoBank, "Pico Bank") {
+  Person(employee,  "Employee", "PicoBank employee)")
+  System(picoTravel, "Pico Travel", "Travel application")
+}
+
+Rel(employee, picoTravel, "Uses", "Browser, Mobile")
+----
+
+
 .Pico Travel Container Level Diagram
 [plantuml, "{plantUMLDir}pico-travel-container", png] 
 ----
-!include /project/src/docs/includes/C4_Container.puml
+!include includes/all.puml
 
 LAYOUT_LEFT_RIGHT
 LAYOUT_WITH_LEGEND
@@ -68,12 +87,12 @@ LAYOUT_WITH_LEGEND
 Person(adminUser, "Administrator", "Administrator user")
 Person(endUser,  "User", "Any Pico user\n(validated by their emails)")
 System_Boundary(c1, "Pico Travel") {
-    Container(browserApp, "Web Application", "Ionic, Static webapp", "Browser application")
-    Container(iosApp, "iOS Application", "Static web application", "Browser application")
-    Container(androidApp, "Android Application", "Ionic, Cordova", "Browser application")
-    Container(authApp, "Pico Travel Auth", "Azure Functions, C#, .Net Core", "Authentification")
-    Container(backendApp, "Pico Travel Back", "Azure WebApp, Spring Boot, Java", "Backend")
-    ContainerDb(nosql, "Data Store", "Azure CosmosDB", "Stores places data, devices & comments")
+    AzureWebAppForContainers(browserApp, "Static web app", "Ionic", "Delivers the SPA")
+    Container(iosApp, "iOS App", "Ionic, Cordova, iOS", "Mobile app")
+    Container(androidApp, "Android App", "Ionic, Cordova, Android", "Mobile app")
+    AzureFunction(authApp, "Auth", ".Net Core", "Enrollment backend")
+    AzureWebAppForContainers(backendApp, "Backend", "SpringBoot", "Backend API for the SPA")
+    AzureCosmosDb(nosql, "Document DB", "Mongo API, 400 RUs", "Stores places data, devices & comments")
 }
 
 
