@@ -95,9 +95,7 @@ System_Boundary(c1, "Pico Travel") {
     AzureCosmosDb(nosql, "Document DB", "Mongo API, 400 RUs", "Stores places data, devices & comments")
 }
 
-
 System_Ext(sendgrid, "SendGrid")
-
 
 Rel(endUser, browserApp, "Uses", "HTTPS")
 Rel(endUser, iosApp, "Uses", "HTTPS")

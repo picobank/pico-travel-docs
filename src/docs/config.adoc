@@ -7,3 +7,6 @@
 
 // where are images located?
 :imagesdir: ./images
+
+:sectnums:
+:sectnumlevels: 5
