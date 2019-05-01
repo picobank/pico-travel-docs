@@ -3,7 +3,7 @@
 
 ##  Building the documentation
 
-    docker run --rm -it --entrypoint /bin/bash -v ${PWD}:/project rdmueller/doctoolchain:v1.1.0 -c "doctoolchain . -PmainConfigFile=Config.groovy --info  && exit"
+    docker run --rm -it --entrypoint /bin/bash -v ${PWD}:/project rdmueller/doctoolchain:v1.1.0 -c "bash -x doctoolchain . -PmainConfigFile=/Config.groovy -PdocDir=/project -PpdfThemeDir=/project/src/docs/pdfTheme generatePDF --info  && exit"
 
 For now, pandoc is not included in the Docker image so on MacOSX:
 
