@@ -61,7 +61,7 @@ footer:
   recto_content:
     right: '{section-or-chapter-title} | *{page-number}*'
   verso_content:
-    left: '*{page-number}* | a{section-or-chapter-title}'
+    left: '*{page-number}* | {section-or-chapter-title}'
 image:
   align: center
 caption:
