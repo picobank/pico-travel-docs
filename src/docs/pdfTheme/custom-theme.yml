@@ -35,7 +35,7 @@ code:
 base:
   font_family: Noto Serif
   font_color: #333333
-  line_height_length: 11
+  line_height_length: 10
   line_height: $base_line_height_length / $base_font_size
 vertical_rhythm: $base_line_height_length
 heading:
